@@ -39,89 +39,65 @@
   margin-top: 1px;
 }
 
-/* Day selector */
-.day-selector {
+/* Segmented Toggle */
+.schedule-toggle-container {
   max-width: 480px;
   margin: 0 auto;
-  padding: 8px 0 4px;
+  padding: 8px 16px 12px;
 }
 
-.day-selector__scroll {
+.schedule-toggle__track {
+  position: relative;
   display: flex;
-  gap: 6px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x mandatory;
-  padding: 0 16px;
-  scrollbar-width: none;
+  height: 40px;
+  border-radius: var(--r-pill);
+  background: var(--color-bg-elevated);
+  padding: 3px;
+  gap: 2px;
 }
 
-.day-selector__scroll::-webkit-scrollbar {
-  display: none;
+.schedule-toggle__slider {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: calc(50% - 4px);
+  height: calc(100% - 6px);
+  border-radius: var(--r-pill);
+  background: var(--color-bg-card);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
 }
 
-.day-pill {
+.dark .schedule-toggle__slider {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.schedule-toggle__slider--right {
+  transform: translateX(calc(100% + 2px));
+}
+
+.schedule-toggle__btn {
+  flex: 1;
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: 1px solid var(--color-bg-border);
-  background: var(--color-bg-card);
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--color-text-secondary);
+  border: none;
+  background: none;
   cursor: pointer;
-  white-space: nowrap;
-  flex-shrink: 0;
-  scroll-snap-align: start;
-  transition: all 150ms ease;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  border-radius: var(--r-pill);
+  transition: color 150ms ease;
   -webkit-tap-highlight-color: transparent;
 }
 
-.day-pill:hover {
-  background: var(--color-accent-dim);
-  border-color: var(--color-accent-glow);
-}
-
-.day-pill:active {
-  transform: scale(0.95);
-}
-
-.day-pill--active {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-  color: #fff;
-}
-
-.day-pill--active:hover {
-  background: var(--color-accent-light);
-  border-color: var(--color-accent-light);
-}
-
-.day-pill__label {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.day-pill__count {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 16px;
-  height: 16px;
-  border-radius: 4px;
-  font-size: 9px;
-  font-weight: 600;
-  background: rgba(0, 0, 0, 0.06);
-  color: var(--color-text-muted);
-}
-
-.day-pill--active .day-pill__count {
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
+.schedule-toggle__btn--active {
+  color: var(--color-text-primary);
 }
 
 /* Content */
@@ -197,15 +173,20 @@
   flex: 1;
   min-width: 0;
   background: var(--color-bg-card);
-  border: 1px solid var(--color-bg-border);
-  border-radius: var(--radius);
-  padding: 12px 14px;
-  margin-bottom: 10px;
-  transition: border-color 150ms ease;
+  border: none;
+  border-radius: var(--r-lg);
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.dark .schedule-card__body {
+  box-shadow: var(--shadow-soft);
 }
 
 .schedule-card--expanded .schedule-card__body {
-  border-color: var(--color-accent);
+  box-shadow: 0 12px 32px rgba(255, 82, 34, 0.12);
 }
 
 .schedule-card__header {
@@ -223,9 +204,9 @@
 }
 
 .schedule-badge {
-  padding: 2px 6px;
-  border-radius: var(--radius);
-  font-size: 9px;
+  padding: 4px 8px;
+  border-radius: var(--r-pill);
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -292,7 +273,7 @@
   height: 36px;
   margin-top: 12px;
   border: 1px solid var(--color-accent);
-  border-radius: var(--radius);
+  border-radius: var(--r-pill);
   background: var(--color-accent-dim);
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 13px;

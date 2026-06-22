@@ -33,7 +33,7 @@ export default function Announcements() {
   }, [])
 
   return (
-    <div className="announcements-page">
+    <div className="announcements-page page-transition">
       {/* Header */}
       <div className="announcements-header">
         <div className="announcements-header__inner">

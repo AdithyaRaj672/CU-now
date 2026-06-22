@@ -4,12 +4,10 @@ import Navbar from './Navbar'
 export default function Layout() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100dvh' }}>
-      <div style={{ flexGrow: 1, overflowY: 'auto' }}>
+      <div style={{ flexGrow: 1, overflowY: 'auto', paddingBottom: '100px' }}>
         <Outlet />
       </div>
-      <div style={{ flexShrink: 0 }}>
-        <Navbar />
-      </div>
+      <Navbar />
     </div>
   )
 }

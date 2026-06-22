@@ -66,7 +66,7 @@ export default function Schedule() {
   }
 
   return (
-    <div className="schedule-page">
+    <div className="schedule-page page-transition">
       {/* Header */}
       <div className="schedule-header">
         <div className="schedule-header__inner">
@@ -75,21 +75,24 @@ export default function Schedule() {
         </div>
 
         {/* Tab selector */}
-        <div className="day-selector">
-          <div className="day-selector__scroll">
+        <div className="schedule-toggle-container">
+          <div className="schedule-toggle__track">
+            <div
+              className={`schedule-toggle__slider ${activeTab === 'upcoming' ? 'schedule-toggle__slider--right' : ''}`}
+            />
             <button
-              className={`day-pill ${activeTab === 'today' ? 'day-pill--active' : ''}`}
+              type="button"
+              className={`schedule-toggle__btn ${activeTab === 'today' ? 'schedule-toggle__btn--active' : ''}`}
               onClick={() => { setActiveTab('today'); setExpandedId(null) }}
             >
-              <span className="day-pill__label">Today</span>
-              {todayEvents.length > 0 && <span className="day-pill__count">{todayEvents.length}</span>}
+              <span>Today {todayEvents.length > 0 && `(${todayEvents.length})`}</span>
             </button>
             <button
-              className={`day-pill ${activeTab === 'upcoming' ? 'day-pill--active' : ''}`}
+              type="button"
+              className={`schedule-toggle__btn ${activeTab === 'upcoming' ? 'schedule-toggle__btn--active' : ''}`}
               onClick={() => { setActiveTab('upcoming'); setExpandedId(null) }}
             >
-              <span className="day-pill__label">Upcoming</span>
-              {upcomingEvents.length > 0 && <span className="day-pill__count">{upcomingEvents.length}</span>}
+              <span>Upcoming {upcomingEvents.length > 0 && `(${upcomingEvents.length})`}</span>
             </button>
           </div>
         </div>

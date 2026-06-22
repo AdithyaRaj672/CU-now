@@ -53,7 +53,7 @@ export default function Dashboard() {
   const todayName = dayNames[now.getDay()]
 
   return (
-    <div className="dashboard-page">
+    <div className="dashboard-page page-transition">
       {/* Header */}
       <div className="dashboard-header">
         <div className="dashboard-header__inner">

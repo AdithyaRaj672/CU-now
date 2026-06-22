@@ -37,7 +37,7 @@ export default function Profile() {
   }
 
   return (
-    <div className="profile-page">
+    <div className="profile-page page-transition">
       {/* Header */}
       <div className="profile-header">
         <div className="profile-header__inner">
